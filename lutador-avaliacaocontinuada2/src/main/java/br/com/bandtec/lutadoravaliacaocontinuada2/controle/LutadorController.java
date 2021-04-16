@@ -28,4 +28,16 @@ public class LutadorController {
     public ResponseEntity getLutador(){
         return ResponseEntity.status(200).body(repository.findAll());
     }
+
+    @GetMapping("/contagem-vivos")
+    public ResponseEntity getContagem(){
+        return ResponseEntity.status(200).body(repository.findByVidaIsTrue(true));
+    }
+
+    @PostMapping("/lutadores/{id}/concentrar")
+    public ResponseEntity postConcentrar(@PathVariable Integer id){
+        repository.save(id);
+        return ResponseEntity.status(201).build();
+//        return "Novo lutador cadastrado";
+    }
 }
