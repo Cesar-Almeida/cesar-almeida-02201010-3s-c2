@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/lutadores")
@@ -27,15 +28,22 @@ public class LutadorController {
         return ResponseEntity.status(200).body(repository.findAll());
     }
 
-    @GetMapping("/contagem-vivos")
-    public ResponseEntity getContagemVivos(){
-        return ResponseEntity.status(200).body(repository.findByVidaTrue());
-    }
-
-    @GetMapping("/mortos")
-    public ResponseEntity getContagemMortos(){
-        return ResponseEntity.status(200).body(repository.findByVidaFalse());
-    }
+//    @GetMapping("/contagem-vivos")
+//    public ResponseEntity getContagemVivos(){
+//        List<Lutador> lutador = repository.findByVidaFalse();
+//        int vivo = 0;
+//        for (Lutador sobrevivendo : lutador){
+//            vivo++;
+//        }
+//        return ResponseEntity.status(200).body(vivo);
+//    }
+//
+//    @GetMapping("/mortos")
+//    public ResponseEntity getContagemMortos(){
+//        List<Lutador> lutadores
+//
+//        return ResponseEntity.status(200).body(repository.findByVidaFalse());
+//    }
 
     @PostMapping("/{id}/concentrar")
     public ResponseEntity postConcentrar(@PathVariable Integer id){
